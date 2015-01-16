@@ -1303,7 +1303,6 @@ static PyObject *__pyx_n_s_x;
 static PyObject *__pyx_n_s_xrange;
 static PyObject *__pyx_n_s_y;
 static PyObject *__pyx_n_s_zeros;
-static PyObject *__pyx_int_0;
 static PyObject *__pyx_tuple__2;
 static PyObject *__pyx_tuple__3;
 static PyObject *__pyx_tuple__4;
@@ -1932,7 +1931,7 @@ static PyObject *__pyx_pw_6qsiapi_9QSICamera_7get_AvailableCameras(PyObject *__p
 static PyObject *__pyx_pf_6qsiapi_9QSICamera_6get_AvailableCameras(struct __pyx_obj_6qsiapi_QSICamera *__pyx_v_self) {
   std::vector<std::string>  __pyx_v_cameraSerial;
   std::vector<std::string>  __pyx_v_cameraDesc;
-  PyObject *__pyx_v_numFound = 0;
+  int __pyx_v_numFound;
   CYTHON_UNUSED int __pyx_v_retVal;
   CYTHON_UNUSED int __pyx_v_i;
   PyObject *__pyx_r = NULL;
@@ -1943,6 +1942,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_6get_AvailableCameras(struct __pyx_
   std::vector<std::string>  __pyx_t_4;
   PyObject *__pyx_t_5 = NULL;
   PyObject *__pyx_t_6 = NULL;
+  PyObject *__pyx_t_7 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -1953,7 +1953,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_6get_AvailableCameras(struct __pyx_
  *         # this means that &vect[0] is like an array of strings (which I can't create any other way!)
  *         cdef vector[string] cameraSerial = ["" for i in xrange(self.thisptr.MAXCAMERAS)]             # <<<<<<<<<<<<<<
  *         cdef vector[string] cameraDesc = ["" for i in xrange(self.thisptr.MAXCAMERAS)]
- *         cdef numFound = 0
+ *         cdef int numFound = 0
  */
   __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 46; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
@@ -1970,7 +1970,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_6get_AvailableCameras(struct __pyx_
  *         # this means that &vect[0] is like an array of strings (which I can't create any other way!)
  *         cdef vector[string] cameraSerial = ["" for i in xrange(self.thisptr.MAXCAMERAS)]
  *         cdef vector[string] cameraDesc = ["" for i in xrange(self.thisptr.MAXCAMERAS)]             # <<<<<<<<<<<<<<
- *         cdef numFound = 0
+ *         cdef int numFound = 0
  * 
  */
   __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 47; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
@@ -1987,28 +1987,26 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_6get_AvailableCameras(struct __pyx_
   /* "qsiapi.pyx":48
  *         cdef vector[string] cameraSerial = ["" for i in xrange(self.thisptr.MAXCAMERAS)]
  *         cdef vector[string] cameraDesc = ["" for i in xrange(self.thisptr.MAXCAMERAS)]
- *         cdef numFound = 0             # <<<<<<<<<<<<<<
+ *         cdef int numFound = 0             # <<<<<<<<<<<<<<
  * 
  *         retVal = self.thisptr.get_AvailableCameras(&cameraSerial[0],&cameraDesc[0],numFound)
  */
-  __Pyx_INCREF(__pyx_int_0);
-  __pyx_v_numFound = __pyx_int_0;
+  __pyx_v_numFound = 0;
 
   /* "qsiapi.pyx":50
- *         cdef numFound = 0
+ *         cdef int numFound = 0
  * 
  *         retVal = self.thisptr.get_AvailableCameras(&cameraSerial[0],&cameraDesc[0],numFound)             # <<<<<<<<<<<<<<
  *         return cameraSerial[0:numFound], cameraDesc[0:numFound], numFound
  * 
  */
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_numFound); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 50; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   try {
-    __pyx_t_3 = __pyx_v_self->thisptr->get_AvailableCameras((&(__pyx_v_cameraSerial[0])), (&(__pyx_v_cameraDesc[0])), __pyx_t_2);
+    __pyx_t_2 = __pyx_v_self->thisptr->get_AvailableCameras((&(__pyx_v_cameraSerial[0])), (&(__pyx_v_cameraDesc[0])), __pyx_v_numFound);
   } catch(...) {
     __Pyx_CppExn2PyErr();
     {__pyx_filename = __pyx_f[0]; __pyx_lineno = 50; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_v_retVal = __pyx_t_3;
+  __pyx_v_retVal = __pyx_t_2;
 
   /* "qsiapi.pyx":51
  * 
@@ -2020,27 +2018,29 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_6get_AvailableCameras(struct __pyx_
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = __pyx_convert_vector_to_py_std_3a__3a_string(__pyx_v_cameraSerial); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 51; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = __Pyx_PyObject_GetSlice(__pyx_t_1, 0, 0, NULL, &__pyx_v_numFound, NULL, 1, 0, 1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 51; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyObject_GetSlice(__pyx_t_1, 0, __pyx_v_numFound, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 51; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = __pyx_convert_vector_to_py_std_3a__3a_string(__pyx_v_cameraDesc); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 51; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_6 = __Pyx_PyObject_GetSlice(__pyx_t_1, 0, 0, NULL, &__pyx_v_numFound, NULL, 1, 0, 1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 51; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = __Pyx_PyObject_GetSlice(__pyx_t_1, 0, __pyx_v_numFound, NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 51; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 51; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_numFound); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 51; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_5);
+  __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 51; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_7);
+  PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_5);
-  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_6);
+  PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_6);
-  __Pyx_INCREF(__pyx_v_numFound);
-  PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_v_numFound);
-  __Pyx_GIVEREF(__pyx_v_numFound);
+  PyTuple_SET_ITEM(__pyx_t_7, 2, __pyx_t_1);
+  __Pyx_GIVEREF(__pyx_t_1);
   __pyx_t_5 = 0;
   __pyx_t_6 = 0;
-  __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
+  __pyx_r = __pyx_t_7;
+  __pyx_t_7 = 0;
   goto __pyx_L0;
 
   /* "qsiapi.pyx":43
@@ -2056,10 +2056,10 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_6get_AvailableCameras(struct __pyx_
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_7);
   __Pyx_AddTraceback("qsiapi.QSICamera.get_AvailableCameras", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_numFound);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
@@ -2170,7 +2170,7 @@ static PyObject *__pyx_pw_6qsiapi_9QSICamera_11get_Names(PyObject *__pyx_v_self,
 static PyObject *__pyx_pf_6qsiapi_9QSICamera_10get_Names(struct __pyx_obj_6qsiapi_QSICamera *__pyx_v_self) {
   PyObject *__pyx_v_nfilt = NULL;
   std::vector<std::string>  __pyx_v_names;
-  int __pyx_v_retVal;
+  CYTHON_UNUSED int __pyx_v_retVal;
   CYTHON_UNUSED PyObject *__pyx_v_i = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -2284,7 +2284,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_10get_Names(struct __pyx_obj_6qsiap
  *         cdef vector[string] names = ["" for i in xrange(nfilt)] # five positions hard coded
  *         cdef int retVal
  *         retVal = self.thisptr.get_Names(&names[0])             # <<<<<<<<<<<<<<
- *         return retVal, names
+ *         return names
  * 
  */
   try {
@@ -2298,25 +2298,15 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_10get_Names(struct __pyx_obj_6qsiap
   /* "qsiapi.pyx":64
  *         cdef int retVal
  *         retVal = self.thisptr.get_Names(&names[0])
- *         return retVal, names             # <<<<<<<<<<<<<<
+ *         return names             # <<<<<<<<<<<<<<
  * 
  *     def put_Names(self,names):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 64; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __pyx_convert_vector_to_py_std_3a__3a_string(__pyx_v_names); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 64; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_convert_vector_to_py_std_3a__3a_string(__pyx_v_names); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 64; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 64; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_GOTREF(__pyx_t_3);
-  PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
-  __Pyx_GIVEREF(__pyx_t_1);
-  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_2);
-  __Pyx_GIVEREF(__pyx_t_2);
+  __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
-  __pyx_t_2 = 0;
-  __pyx_r = __pyx_t_3;
-  __pyx_t_3 = 0;
   goto __pyx_L0;
 
   /* "qsiapi.pyx":58
@@ -2343,7 +2333,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_10get_Names(struct __pyx_obj_6qsiap
 }
 
 /* "qsiapi.pyx":66
- *         return retVal, names
+ *         return names
  * 
  *     def put_Names(self,names):             # <<<<<<<<<<<<<<
  *         # see available cameras for string array fudge
@@ -2366,7 +2356,7 @@ static PyObject *__pyx_pw_6qsiapi_9QSICamera_13put_Names(PyObject *__pyx_v_self,
 static PyObject *__pyx_pf_6qsiapi_9QSICamera_12put_Names(struct __pyx_obj_6qsiapi_QSICamera *__pyx_v_self, PyObject *__pyx_v_names) {
   PyObject *__pyx_v_nfilt = NULL;
   std::vector<std::string>  __pyx_v_cnames;
-  CYTHON_UNUSED PyObject *__pyx_v_retVal = 0;
+  PyObject *__pyx_v_retVal = 0;
   PyObject *__pyx_v_i = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -2510,8 +2500,8 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_12put_Names(struct __pyx_obj_6qsiap
  *         cdef vector[string] cnames = [names[i] for i in xrange(nfilt)]
  *         cdef retVal
  *         retVal = self.thisptr.put_Names(&cnames[0])             # <<<<<<<<<<<<<<
+ *         return retVal
  * 
- *     def AbortExposure(self):
  */
   try {
     __pyx_t_8 = __pyx_v_self->thisptr->put_Names((&(__pyx_v_cnames[0])));
@@ -2524,8 +2514,20 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_12put_Names(struct __pyx_obj_6qsiap
   __pyx_v_retVal = __pyx_t_2;
   __pyx_t_2 = 0;
 
+  /* "qsiapi.pyx":73
+ *         cdef retVal
+ *         retVal = self.thisptr.put_Names(&cnames[0])
+ *         return retVal             # <<<<<<<<<<<<<<
+ * 
+ *     def AbortExposure(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(__pyx_v_retVal);
+  __pyx_r = __pyx_v_retVal;
+  goto __pyx_L0;
+
   /* "qsiapi.pyx":66
- *         return retVal, names
+ *         return names
  * 
  *     def put_Names(self,names):             # <<<<<<<<<<<<<<
  *         # see available cameras for string array fudge
@@ -2533,8 +2535,6 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_12put_Names(struct __pyx_obj_6qsiap
  */
 
   /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
@@ -2550,8 +2550,8 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_12put_Names(struct __pyx_obj_6qsiap
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":74
- *         retVal = self.thisptr.put_Names(&cnames[0])
+/* "qsiapi.pyx":75
+ *         return retVal
  * 
  *     def AbortExposure(self):             # <<<<<<<<<<<<<<
  *         cdef int retVal
@@ -2582,7 +2582,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_14AbortExposure(struct __pyx_obj_6q
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("AbortExposure", 0);
 
-  /* "qsiapi.pyx":76
+  /* "qsiapi.pyx":77
  *     def AbortExposure(self):
  *         cdef int retVal
  *         retVal = self.thisptr.AbortExposure()             # <<<<<<<<<<<<<<
@@ -2593,11 +2593,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_14AbortExposure(struct __pyx_obj_6q
     __pyx_t_1 = __pyx_v_self->thisptr->AbortExposure();
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":77
+  /* "qsiapi.pyx":78
  *         cdef int retVal
  *         retVal = self.thisptr.AbortExposure()
  *         return retVal             # <<<<<<<<<<<<<<
@@ -2605,14 +2605,14 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_14AbortExposure(struct __pyx_obj_6q
  *     def StartExposure(self,double expT, bool shutterOpen):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 78; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":74
- *         retVal = self.thisptr.put_Names(&cnames[0])
+  /* "qsiapi.pyx":75
+ *         return retVal
  * 
  *     def AbortExposure(self):             # <<<<<<<<<<<<<<
  *         cdef int retVal
@@ -2630,7 +2630,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_14AbortExposure(struct __pyx_obj_6q
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":79
+/* "qsiapi.pyx":80
  *         return retVal
  * 
  *     def StartExposure(self,double expT, bool shutterOpen):             # <<<<<<<<<<<<<<
@@ -2669,11 +2669,11 @@ static PyObject *__pyx_pw_6qsiapi_9QSICamera_17StartExposure(PyObject *__pyx_v_s
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_shutterOpen)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("StartExposure", 1, 2, 2, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 79; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("StartExposure", 1, 2, 2, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 80; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "StartExposure") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 79; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "StartExposure") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 80; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -2681,12 +2681,12 @@ static PyObject *__pyx_pw_6qsiapi_9QSICamera_17StartExposure(PyObject *__pyx_v_s
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
-    __pyx_v_expT = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_expT == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 79; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
-    __pyx_v_shutterOpen = __Pyx_PyObject_IsTrue(values[1]); if (unlikely((__pyx_v_shutterOpen == (bool)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 79; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_expT = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_expT == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 80; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_shutterOpen = __Pyx_PyObject_IsTrue(values[1]); if (unlikely((__pyx_v_shutterOpen == (bool)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 80; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("StartExposure", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 79; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("StartExposure", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 80; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("qsiapi.QSICamera.StartExposure", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -2709,7 +2709,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_16StartExposure(struct __pyx_obj_6q
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("StartExposure", 0);
 
-  /* "qsiapi.pyx":80
+  /* "qsiapi.pyx":81
  * 
  *     def StartExposure(self,double expT, bool shutterOpen):
  *         return self.thisptr.StartExposure(expT,shutterOpen)             # <<<<<<<<<<<<<<
@@ -2721,15 +2721,15 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_16StartExposure(struct __pyx_obj_6q
     __pyx_t_1 = __pyx_v_self->thisptr->StartExposure(__pyx_v_expT, __pyx_v_shutterOpen);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 80; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 81; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 80; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 81; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":79
+  /* "qsiapi.pyx":80
  *         return retVal
  * 
  *     def StartExposure(self,double expT, bool shutterOpen):             # <<<<<<<<<<<<<<
@@ -2748,7 +2748,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_16StartExposure(struct __pyx_obj_6q
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":82
+/* "qsiapi.pyx":83
  *         return self.thisptr.StartExposure(expT,shutterOpen)
  * 
  *     def get_BinX(self):             # <<<<<<<<<<<<<<
@@ -2783,7 +2783,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_18get_BinX(struct __pyx_obj_6qsiapi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_BinX", 0);
 
-  /* "qsiapi.pyx":85
+  /* "qsiapi.pyx":86
  *         cdef int retVal
  *         cdef short binX
  *         retVal = self.thisptr.get_BinX(&binX)             # <<<<<<<<<<<<<<
@@ -2794,11 +2794,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_18get_BinX(struct __pyx_obj_6qsiapi
     __pyx_t_1 = __pyx_v_self->thisptr->get_BinX((&__pyx_v_binX));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 85; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 86; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":86
+  /* "qsiapi.pyx":87
  *         cdef short binX
  *         retVal = self.thisptr.get_BinX(&binX)
  *         return retVal, binX             # <<<<<<<<<<<<<<
@@ -2806,11 +2806,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_18get_BinX(struct __pyx_obj_6qsiapi
  *     def put_BinX(self,short val):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 86; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_From_short(__pyx_v_binX); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 86; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyInt_From_short(__pyx_v_binX); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 86; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -2822,7 +2822,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_18get_BinX(struct __pyx_obj_6qsiapi
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":82
+  /* "qsiapi.pyx":83
  *         return self.thisptr.StartExposure(expT,shutterOpen)
  * 
  *     def get_BinX(self):             # <<<<<<<<<<<<<<
@@ -2843,7 +2843,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_18get_BinX(struct __pyx_obj_6qsiapi
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":88
+/* "qsiapi.pyx":89
  *         return retVal, binX
  * 
  *     def put_BinX(self,short val):             # <<<<<<<<<<<<<<
@@ -2862,7 +2862,7 @@ static PyObject *__pyx_pw_6qsiapi_9QSICamera_21put_BinX(PyObject *__pyx_v_self, 
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("put_BinX (wrapper)", 0);
   assert(__pyx_arg_val); {
-    __pyx_v_val = __Pyx_PyInt_As_short(__pyx_arg_val); if (unlikely((__pyx_v_val == (short)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 88; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_val = __Pyx_PyInt_As_short(__pyx_arg_val); if (unlikely((__pyx_v_val == (short)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 89; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -2888,7 +2888,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_20put_BinX(struct __pyx_obj_6qsiapi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("put_BinX", 0);
 
-  /* "qsiapi.pyx":90
+  /* "qsiapi.pyx":91
  *     def put_BinX(self,short val):
  *         cdef int retVal
  *         retVal = self.thisptr.put_BinX(val)             # <<<<<<<<<<<<<<
@@ -2899,11 +2899,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_20put_BinX(struct __pyx_obj_6qsiapi
     __pyx_t_1 = __pyx_v_self->thisptr->put_BinX(__pyx_v_val);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 90; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 91; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":91
+  /* "qsiapi.pyx":92
  *         cdef int retVal
  *         retVal = self.thisptr.put_BinX(val)
  *         return retVal             # <<<<<<<<<<<<<<
@@ -2911,13 +2911,13 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_20put_BinX(struct __pyx_obj_6qsiapi
  *     def get_BinY(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 91; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 92; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":88
+  /* "qsiapi.pyx":89
  *         return retVal, binX
  * 
  *     def put_BinX(self,short val):             # <<<<<<<<<<<<<<
@@ -2936,7 +2936,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_20put_BinX(struct __pyx_obj_6qsiapi
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":93
+/* "qsiapi.pyx":94
  *         return retVal
  * 
  *     def get_BinY(self):             # <<<<<<<<<<<<<<
@@ -2971,7 +2971,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_22get_BinY(struct __pyx_obj_6qsiapi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_BinY", 0);
 
-  /* "qsiapi.pyx":96
+  /* "qsiapi.pyx":97
  *         cdef int retVal
  *         cdef short binY
  *         retVal = self.thisptr.get_BinY(&binY)             # <<<<<<<<<<<<<<
@@ -2982,11 +2982,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_22get_BinY(struct __pyx_obj_6qsiapi
     __pyx_t_1 = __pyx_v_self->thisptr->get_BinY((&__pyx_v_binY));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 96; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 97; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":97
+  /* "qsiapi.pyx":98
  *         cdef short binY
  *         retVal = self.thisptr.get_BinY(&binY)
  *         return retVal, binY             # <<<<<<<<<<<<<<
@@ -2994,11 +2994,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_22get_BinY(struct __pyx_obj_6qsiapi
  *     def put_BinY(self,short val):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 97; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 98; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_From_short(__pyx_v_binY); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 97; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyInt_From_short(__pyx_v_binY); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 98; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 97; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 98; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -3010,7 +3010,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_22get_BinY(struct __pyx_obj_6qsiapi
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":93
+  /* "qsiapi.pyx":94
  *         return retVal
  * 
  *     def get_BinY(self):             # <<<<<<<<<<<<<<
@@ -3031,7 +3031,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_22get_BinY(struct __pyx_obj_6qsiapi
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":99
+/* "qsiapi.pyx":100
  *         return retVal, binY
  * 
  *     def put_BinY(self,short val):             # <<<<<<<<<<<<<<
@@ -3050,7 +3050,7 @@ static PyObject *__pyx_pw_6qsiapi_9QSICamera_25put_BinY(PyObject *__pyx_v_self, 
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("put_BinY (wrapper)", 0);
   assert(__pyx_arg_val); {
-    __pyx_v_val = __Pyx_PyInt_As_short(__pyx_arg_val); if (unlikely((__pyx_v_val == (short)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 99; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_val = __Pyx_PyInt_As_short(__pyx_arg_val); if (unlikely((__pyx_v_val == (short)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 100; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -3076,7 +3076,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_24put_BinY(struct __pyx_obj_6qsiapi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("put_BinY", 0);
 
-  /* "qsiapi.pyx":101
+  /* "qsiapi.pyx":102
  *     def put_BinY(self,short val):
  *         cdef int retVal
  *         retVal = self.thisptr.put_BinY(val)             # <<<<<<<<<<<<<<
@@ -3087,11 +3087,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_24put_BinY(struct __pyx_obj_6qsiapi
     __pyx_t_1 = __pyx_v_self->thisptr->put_BinY(__pyx_v_val);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 101; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 102; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":102
+  /* "qsiapi.pyx":103
  *         cdef int retVal
  *         retVal = self.thisptr.put_BinY(val)
  *         return retVal             # <<<<<<<<<<<<<<
@@ -3099,13 +3099,13 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_24put_BinY(struct __pyx_obj_6qsiapi
  *     def get_StartX(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 102; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 103; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":99
+  /* "qsiapi.pyx":100
  *         return retVal, binY
  * 
  *     def put_BinY(self,short val):             # <<<<<<<<<<<<<<
@@ -3124,7 +3124,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_24put_BinY(struct __pyx_obj_6qsiapi
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":104
+/* "qsiapi.pyx":105
  *         return retVal
  * 
  *     def get_StartX(self):             # <<<<<<<<<<<<<<
@@ -3159,7 +3159,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_26get_StartX(struct __pyx_obj_6qsia
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_StartX", 0);
 
-  /* "qsiapi.pyx":107
+  /* "qsiapi.pyx":108
  *         cdef int retVal
  *         cdef long StartX
  *         retVal = self.thisptr.get_StartX(&StartX)             # <<<<<<<<<<<<<<
@@ -3170,11 +3170,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_26get_StartX(struct __pyx_obj_6qsia
     __pyx_t_1 = __pyx_v_self->thisptr->get_StartX((&__pyx_v_StartX));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 107; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 108; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":108
+  /* "qsiapi.pyx":109
  *         cdef long StartX
  *         retVal = self.thisptr.get_StartX(&StartX)
  *         return retVal, StartX             # <<<<<<<<<<<<<<
@@ -3182,11 +3182,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_26get_StartX(struct __pyx_obj_6qsia
  *     def put_StartX(self,long val):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 108; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 109; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_From_long(__pyx_v_StartX); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 108; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyInt_From_long(__pyx_v_StartX); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 109; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 108; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 109; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -3198,7 +3198,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_26get_StartX(struct __pyx_obj_6qsia
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":104
+  /* "qsiapi.pyx":105
  *         return retVal
  * 
  *     def get_StartX(self):             # <<<<<<<<<<<<<<
@@ -3219,7 +3219,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_26get_StartX(struct __pyx_obj_6qsia
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":110
+/* "qsiapi.pyx":111
  *         return retVal, StartX
  * 
  *     def put_StartX(self,long val):             # <<<<<<<<<<<<<<
@@ -3238,7 +3238,7 @@ static PyObject *__pyx_pw_6qsiapi_9QSICamera_29put_StartX(PyObject *__pyx_v_self
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("put_StartX (wrapper)", 0);
   assert(__pyx_arg_val); {
-    __pyx_v_val = __Pyx_PyInt_As_long(__pyx_arg_val); if (unlikely((__pyx_v_val == (long)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 110; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_val = __Pyx_PyInt_As_long(__pyx_arg_val); if (unlikely((__pyx_v_val == (long)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 111; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -3264,7 +3264,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_28put_StartX(struct __pyx_obj_6qsia
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("put_StartX", 0);
 
-  /* "qsiapi.pyx":112
+  /* "qsiapi.pyx":113
  *     def put_StartX(self,long val):
  *         cdef int retVal
  *         retVal = self.thisptr.put_StartX(val)             # <<<<<<<<<<<<<<
@@ -3275,11 +3275,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_28put_StartX(struct __pyx_obj_6qsia
     __pyx_t_1 = __pyx_v_self->thisptr->put_StartX(__pyx_v_val);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 112; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 113; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":113
+  /* "qsiapi.pyx":114
  *         cdef int retVal
  *         retVal = self.thisptr.put_StartX(val)
  *         return retVal             # <<<<<<<<<<<<<<
@@ -3287,13 +3287,13 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_28put_StartX(struct __pyx_obj_6qsia
  *     def get_StartY(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 113; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 114; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":110
+  /* "qsiapi.pyx":111
  *         return retVal, StartX
  * 
  *     def put_StartX(self,long val):             # <<<<<<<<<<<<<<
@@ -3312,7 +3312,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_28put_StartX(struct __pyx_obj_6qsia
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":115
+/* "qsiapi.pyx":116
  *         return retVal
  * 
  *     def get_StartY(self):             # <<<<<<<<<<<<<<
@@ -3347,7 +3347,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_30get_StartY(struct __pyx_obj_6qsia
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_StartY", 0);
 
-  /* "qsiapi.pyx":118
+  /* "qsiapi.pyx":119
  *         cdef int retVal
  *         cdef long StartY
  *         retVal = self.thisptr.get_StartY(&StartY)             # <<<<<<<<<<<<<<
@@ -3358,11 +3358,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_30get_StartY(struct __pyx_obj_6qsia
     __pyx_t_1 = __pyx_v_self->thisptr->get_StartY((&__pyx_v_StartY));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":119
+  /* "qsiapi.pyx":120
  *         cdef long StartY
  *         retVal = self.thisptr.get_StartY(&StartY)
  *         return retVal, StartY             # <<<<<<<<<<<<<<
@@ -3370,11 +3370,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_30get_StartY(struct __pyx_obj_6qsia
  *     def put_StartY(self,long val):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 120; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_From_long(__pyx_v_StartY); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyInt_From_long(__pyx_v_StartY); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 120; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 119; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 120; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -3386,7 +3386,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_30get_StartY(struct __pyx_obj_6qsia
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":115
+  /* "qsiapi.pyx":116
  *         return retVal
  * 
  *     def get_StartY(self):             # <<<<<<<<<<<<<<
@@ -3407,7 +3407,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_30get_StartY(struct __pyx_obj_6qsia
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":121
+/* "qsiapi.pyx":122
  *         return retVal, StartY
  * 
  *     def put_StartY(self,long val):             # <<<<<<<<<<<<<<
@@ -3426,7 +3426,7 @@ static PyObject *__pyx_pw_6qsiapi_9QSICamera_33put_StartY(PyObject *__pyx_v_self
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("put_StartY (wrapper)", 0);
   assert(__pyx_arg_val); {
-    __pyx_v_val = __Pyx_PyInt_As_long(__pyx_arg_val); if (unlikely((__pyx_v_val == (long)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 121; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_val = __Pyx_PyInt_As_long(__pyx_arg_val); if (unlikely((__pyx_v_val == (long)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 122; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -3452,7 +3452,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_32put_StartY(struct __pyx_obj_6qsia
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("put_StartY", 0);
 
-  /* "qsiapi.pyx":123
+  /* "qsiapi.pyx":124
  *     def put_StartY(self,long val):
  *         cdef int retVal
  *         retVal = self.thisptr.put_StartY(val)             # <<<<<<<<<<<<<<
@@ -3463,11 +3463,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_32put_StartY(struct __pyx_obj_6qsia
     __pyx_t_1 = __pyx_v_self->thisptr->put_StartY(__pyx_v_val);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":124
+  /* "qsiapi.pyx":125
  *         cdef int retVal
  *         retVal = self.thisptr.put_StartY(val)
  *         return retVal             # <<<<<<<<<<<<<<
@@ -3475,13 +3475,13 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_32put_StartY(struct __pyx_obj_6qsia
  *     def get_NumX(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 125; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":121
+  /* "qsiapi.pyx":122
  *         return retVal, StartY
  * 
  *     def put_StartY(self,long val):             # <<<<<<<<<<<<<<
@@ -3500,7 +3500,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_32put_StartY(struct __pyx_obj_6qsia
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":126
+/* "qsiapi.pyx":127
  *         return retVal
  * 
  *     def get_NumX(self):             # <<<<<<<<<<<<<<
@@ -3535,7 +3535,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_34get_NumX(struct __pyx_obj_6qsiapi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_NumX", 0);
 
-  /* "qsiapi.pyx":129
+  /* "qsiapi.pyx":130
  *         cdef int retVal
  *         cdef long NumX
  *         retVal = self.thisptr.get_NumX(&NumX)             # <<<<<<<<<<<<<<
@@ -3546,11 +3546,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_34get_NumX(struct __pyx_obj_6qsiapi
     __pyx_t_1 = __pyx_v_self->thisptr->get_NumX((&__pyx_v_NumX));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 129; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 130; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":130
+  /* "qsiapi.pyx":131
  *         cdef long NumX
  *         retVal = self.thisptr.get_NumX(&NumX)
  *         return retVal, NumX             # <<<<<<<<<<<<<<
@@ -3558,11 +3558,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_34get_NumX(struct __pyx_obj_6qsiapi
  *     def put_NumX(self,long val):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 130; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 131; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_From_long(__pyx_v_NumX); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 130; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyInt_From_long(__pyx_v_NumX); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 131; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 130; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 131; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -3574,7 +3574,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_34get_NumX(struct __pyx_obj_6qsiapi
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":126
+  /* "qsiapi.pyx":127
  *         return retVal
  * 
  *     def get_NumX(self):             # <<<<<<<<<<<<<<
@@ -3595,7 +3595,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_34get_NumX(struct __pyx_obj_6qsiapi
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":132
+/* "qsiapi.pyx":133
  *         return retVal, NumX
  * 
  *     def put_NumX(self,long val):             # <<<<<<<<<<<<<<
@@ -3614,7 +3614,7 @@ static PyObject *__pyx_pw_6qsiapi_9QSICamera_37put_NumX(PyObject *__pyx_v_self, 
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("put_NumX (wrapper)", 0);
   assert(__pyx_arg_val); {
-    __pyx_v_val = __Pyx_PyInt_As_long(__pyx_arg_val); if (unlikely((__pyx_v_val == (long)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 132; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_val = __Pyx_PyInt_As_long(__pyx_arg_val); if (unlikely((__pyx_v_val == (long)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 133; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -3640,7 +3640,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_36put_NumX(struct __pyx_obj_6qsiapi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("put_NumX", 0);
 
-  /* "qsiapi.pyx":134
+  /* "qsiapi.pyx":135
  *     def put_NumX(self,long val):
  *         cdef int retVal
  *         retVal = self.thisptr.put_NumX(val)             # <<<<<<<<<<<<<<
@@ -3651,11 +3651,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_36put_NumX(struct __pyx_obj_6qsiapi
     __pyx_t_1 = __pyx_v_self->thisptr->put_NumX(__pyx_v_val);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 134; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 135; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":135
+  /* "qsiapi.pyx":136
  *         cdef int retVal
  *         retVal = self.thisptr.put_NumX(val)
  *         return retVal             # <<<<<<<<<<<<<<
@@ -3663,13 +3663,13 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_36put_NumX(struct __pyx_obj_6qsiapi
  *     def get_NumY(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 135; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 136; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":132
+  /* "qsiapi.pyx":133
  *         return retVal, NumX
  * 
  *     def put_NumX(self,long val):             # <<<<<<<<<<<<<<
@@ -3688,7 +3688,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_36put_NumX(struct __pyx_obj_6qsiapi
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":137
+/* "qsiapi.pyx":138
  *         return retVal
  * 
  *     def get_NumY(self):             # <<<<<<<<<<<<<<
@@ -3723,7 +3723,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_38get_NumY(struct __pyx_obj_6qsiapi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_NumY", 0);
 
-  /* "qsiapi.pyx":140
+  /* "qsiapi.pyx":141
  *         cdef int retVal
  *         cdef long NumY
  *         retVal = self.thisptr.get_NumY(&NumY)             # <<<<<<<<<<<<<<
@@ -3734,11 +3734,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_38get_NumY(struct __pyx_obj_6qsiapi
     __pyx_t_1 = __pyx_v_self->thisptr->get_NumY((&__pyx_v_NumY));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 140; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 141; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":141
+  /* "qsiapi.pyx":142
  *         cdef long NumY
  *         retVal = self.thisptr.get_NumY(&NumY)
  *         return retVal, NumY             # <<<<<<<<<<<<<<
@@ -3746,11 +3746,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_38get_NumY(struct __pyx_obj_6qsiapi
  *     def put_NumY(self,long val):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 141; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 142; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_From_long(__pyx_v_NumY); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 141; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyInt_From_long(__pyx_v_NumY); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 142; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 141; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 142; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -3762,7 +3762,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_38get_NumY(struct __pyx_obj_6qsiapi
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":137
+  /* "qsiapi.pyx":138
  *         return retVal
  * 
  *     def get_NumY(self):             # <<<<<<<<<<<<<<
@@ -3783,7 +3783,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_38get_NumY(struct __pyx_obj_6qsiapi
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":143
+/* "qsiapi.pyx":144
  *         return retVal, NumY
  * 
  *     def put_NumY(self,long val):             # <<<<<<<<<<<<<<
@@ -3802,7 +3802,7 @@ static PyObject *__pyx_pw_6qsiapi_9QSICamera_41put_NumY(PyObject *__pyx_v_self, 
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("put_NumY (wrapper)", 0);
   assert(__pyx_arg_val); {
-    __pyx_v_val = __Pyx_PyInt_As_long(__pyx_arg_val); if (unlikely((__pyx_v_val == (long)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 143; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_val = __Pyx_PyInt_As_long(__pyx_arg_val); if (unlikely((__pyx_v_val == (long)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 144; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -3828,7 +3828,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_40put_NumY(struct __pyx_obj_6qsiapi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("put_NumY", 0);
 
-  /* "qsiapi.pyx":145
+  /* "qsiapi.pyx":146
  *     def put_NumY(self,long val):
  *         cdef int retVal
  *         retVal = self.thisptr.put_NumY(val)             # <<<<<<<<<<<<<<
@@ -3839,11 +3839,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_40put_NumY(struct __pyx_obj_6qsiapi
     __pyx_t_1 = __pyx_v_self->thisptr->put_NumY(__pyx_v_val);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 145; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 146; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":146
+  /* "qsiapi.pyx":147
  *         cdef int retVal
  *         retVal = self.thisptr.put_NumY(val)
  *         return retVal             # <<<<<<<<<<<<<<
@@ -3851,13 +3851,13 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_40put_NumY(struct __pyx_obj_6qsiapi
  *     def get_Connected(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 146; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 147; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":143
+  /* "qsiapi.pyx":144
  *         return retVal, NumY
  * 
  *     def put_NumY(self,long val):             # <<<<<<<<<<<<<<
@@ -3876,7 +3876,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_40put_NumY(struct __pyx_obj_6qsiapi
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":148
+/* "qsiapi.pyx":149
  *         return retVal
  * 
  *     def get_Connected(self):             # <<<<<<<<<<<<<<
@@ -3911,7 +3911,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_42get_Connected(struct __pyx_obj_6q
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_Connected", 0);
 
-  /* "qsiapi.pyx":151
+  /* "qsiapi.pyx":152
  *         cdef int retVal
  *         cdef bool conn
  *         retVal = self.thisptr.get_Connected(&conn)             # <<<<<<<<<<<<<<
@@ -3922,11 +3922,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_42get_Connected(struct __pyx_obj_6q
     __pyx_t_1 = __pyx_v_self->thisptr->get_Connected((&__pyx_v_conn));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 151; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 152; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":152
+  /* "qsiapi.pyx":153
  *         cdef bool conn
  *         retVal = self.thisptr.get_Connected(&conn)
  *         return retVal, conn             # <<<<<<<<<<<<<<
@@ -3934,11 +3934,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_42get_Connected(struct __pyx_obj_6q
  *     def put_Connected(self,bool conn):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 152; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 153; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyBool_FromLong(__pyx_v_conn); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 152; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyBool_FromLong(__pyx_v_conn); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 153; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 152; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 153; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -3950,7 +3950,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_42get_Connected(struct __pyx_obj_6q
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":148
+  /* "qsiapi.pyx":149
  *         return retVal
  * 
  *     def get_Connected(self):             # <<<<<<<<<<<<<<
@@ -3971,7 +3971,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_42get_Connected(struct __pyx_obj_6q
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":154
+/* "qsiapi.pyx":155
  *         return retVal, conn
  * 
  *     def put_Connected(self,bool conn):             # <<<<<<<<<<<<<<
@@ -3990,7 +3990,7 @@ static PyObject *__pyx_pw_6qsiapi_9QSICamera_45put_Connected(PyObject *__pyx_v_s
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("put_Connected (wrapper)", 0);
   assert(__pyx_arg_conn); {
-    __pyx_v_conn = __Pyx_PyObject_IsTrue(__pyx_arg_conn); if (unlikely((__pyx_v_conn == (bool)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 154; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_conn = __Pyx_PyObject_IsTrue(__pyx_arg_conn); if (unlikely((__pyx_v_conn == (bool)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 155; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -4016,7 +4016,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_44put_Connected(struct __pyx_obj_6q
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("put_Connected", 0);
 
-  /* "qsiapi.pyx":156
+  /* "qsiapi.pyx":157
  *     def put_Connected(self,bool conn):
  *         cdef int retVal
  *         retVal = self.thisptr.put_Connected(conn)             # <<<<<<<<<<<<<<
@@ -4027,11 +4027,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_44put_Connected(struct __pyx_obj_6q
     __pyx_t_1 = __pyx_v_self->thisptr->put_Connected(__pyx_v_conn);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 156; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 157; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":157
+  /* "qsiapi.pyx":158
  *         cdef int retVal
  *         retVal = self.thisptr.put_Connected(conn)
  *         return retVal             # <<<<<<<<<<<<<<
@@ -4039,13 +4039,13 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_44put_Connected(struct __pyx_obj_6q
  *     def get_CCDTemperature(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 157; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 158; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":154
+  /* "qsiapi.pyx":155
  *         return retVal, conn
  * 
  *     def put_Connected(self,bool conn):             # <<<<<<<<<<<<<<
@@ -4064,7 +4064,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_44put_Connected(struct __pyx_obj_6q
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":159
+/* "qsiapi.pyx":160
  *         return retVal
  * 
  *     def get_CCDTemperature(self):             # <<<<<<<<<<<<<<
@@ -4099,7 +4099,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_46get_CCDTemperature(struct __pyx_o
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_CCDTemperature", 0);
 
-  /* "qsiapi.pyx":162
+  /* "qsiapi.pyx":163
  *         cdef int retVal
  *         cdef double temp
  *         retVal = self.thisptr.get_CCDTemperature(&temp)             # <<<<<<<<<<<<<<
@@ -4110,11 +4110,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_46get_CCDTemperature(struct __pyx_o
     __pyx_t_1 = __pyx_v_self->thisptr->get_CCDTemperature((&__pyx_v_temp));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 162; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 163; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":163
+  /* "qsiapi.pyx":164
  *         cdef double temp
  *         retVal = self.thisptr.get_CCDTemperature(&temp)
  *         return retVal, temp             # <<<<<<<<<<<<<<
@@ -4122,11 +4122,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_46get_CCDTemperature(struct __pyx_o
  *     def get_CameraState(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 163; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 164; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_temp); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 163; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_temp); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 164; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 163; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 164; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -4138,7 +4138,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_46get_CCDTemperature(struct __pyx_o
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":159
+  /* "qsiapi.pyx":160
  *         return retVal
  * 
  *     def get_CCDTemperature(self):             # <<<<<<<<<<<<<<
@@ -4159,7 +4159,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_46get_CCDTemperature(struct __pyx_o
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":165
+/* "qsiapi.pyx":166
  *         return retVal, temp
  * 
  *     def get_CameraState(self):             # <<<<<<<<<<<<<<
@@ -4194,7 +4194,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_48get_CameraState(struct __pyx_obj_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_CameraState", 0);
 
-  /* "qsiapi.pyx":168
+  /* "qsiapi.pyx":169
  *         cdef int retVal
  *         cdef CameraState state
  *         retVal = self.thisptr.get_CameraState(&state)             # <<<<<<<<<<<<<<
@@ -4205,11 +4205,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_48get_CameraState(struct __pyx_obj_
     __pyx_t_1 = __pyx_v_self->thisptr->get_CameraState((&__pyx_v_state));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 168; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 169; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":169
+  /* "qsiapi.pyx":170
  *         cdef CameraState state
  *         retVal = self.thisptr.get_CameraState(&state)
  *         return retVal, state             # <<<<<<<<<<<<<<
@@ -4217,11 +4217,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_48get_CameraState(struct __pyx_obj_
  *     def get_CameraXSize(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 169; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 170; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyInt_FromLong(__pyx_v_state); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 169; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyInt_FromLong(__pyx_v_state); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 170; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 169; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 170; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -4233,7 +4233,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_48get_CameraState(struct __pyx_obj_
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":165
+  /* "qsiapi.pyx":166
  *         return retVal, temp
  * 
  *     def get_CameraState(self):             # <<<<<<<<<<<<<<
@@ -4254,7 +4254,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_48get_CameraState(struct __pyx_obj_
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":171
+/* "qsiapi.pyx":172
  *         return retVal, state
  * 
  *     def get_CameraXSize(self):             # <<<<<<<<<<<<<<
@@ -4289,7 +4289,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_50get_CameraXSize(struct __pyx_obj_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_CameraXSize", 0);
 
-  /* "qsiapi.pyx":174
+  /* "qsiapi.pyx":175
  *         cdef int retVal
  *         cdef long val
  *         retVal = self.thisptr.get_CameraXSize(&val)             # <<<<<<<<<<<<<<
@@ -4300,11 +4300,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_50get_CameraXSize(struct __pyx_obj_
     __pyx_t_1 = __pyx_v_self->thisptr->get_CameraXSize((&__pyx_v_val));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 174; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 175; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":175
+  /* "qsiapi.pyx":176
  *         cdef long val
  *         retVal = self.thisptr.get_CameraXSize(&val)
  *         return retVal, val             # <<<<<<<<<<<<<<
@@ -4312,11 +4312,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_50get_CameraXSize(struct __pyx_obj_
  *     def get_CameraYSize(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 175; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 176; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_From_long(__pyx_v_val); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 175; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyInt_From_long(__pyx_v_val); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 176; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 175; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 176; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -4328,7 +4328,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_50get_CameraXSize(struct __pyx_obj_
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":171
+  /* "qsiapi.pyx":172
  *         return retVal, state
  * 
  *     def get_CameraXSize(self):             # <<<<<<<<<<<<<<
@@ -4349,7 +4349,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_50get_CameraXSize(struct __pyx_obj_
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":177
+/* "qsiapi.pyx":178
  *         return retVal, val
  * 
  *     def get_CameraYSize(self):             # <<<<<<<<<<<<<<
@@ -4384,7 +4384,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_52get_CameraYSize(struct __pyx_obj_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_CameraYSize", 0);
 
-  /* "qsiapi.pyx":180
+  /* "qsiapi.pyx":181
  *         cdef int retVal
  *         cdef long val
  *         retVal = self.thisptr.get_CameraYSize(&val)             # <<<<<<<<<<<<<<
@@ -4395,11 +4395,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_52get_CameraYSize(struct __pyx_obj_
     __pyx_t_1 = __pyx_v_self->thisptr->get_CameraYSize((&__pyx_v_val));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 180; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 181; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":181
+  /* "qsiapi.pyx":182
  *         cdef long val
  *         retVal = self.thisptr.get_CameraYSize(&val)
  *         return retVal, val             # <<<<<<<<<<<<<<
@@ -4407,11 +4407,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_52get_CameraYSize(struct __pyx_obj_
  *     def get_Description(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 181; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 182; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_From_long(__pyx_v_val); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 181; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyInt_From_long(__pyx_v_val); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 182; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 181; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 182; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -4423,7 +4423,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_52get_CameraYSize(struct __pyx_obj_
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":177
+  /* "qsiapi.pyx":178
  *         return retVal, val
  * 
  *     def get_CameraYSize(self):             # <<<<<<<<<<<<<<
@@ -4444,7 +4444,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_52get_CameraYSize(struct __pyx_obj_
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":183
+/* "qsiapi.pyx":184
  *         return retVal, val
  * 
  *     def get_Description(self):             # <<<<<<<<<<<<<<
@@ -4479,7 +4479,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_54get_Description(struct __pyx_obj_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_Description", 0);
 
-  /* "qsiapi.pyx":186
+  /* "qsiapi.pyx":187
  *         cdef string val
  *         cdef int retVal
  *         retVal = self.thisptr.get_Description(val)             # <<<<<<<<<<<<<<
@@ -4490,11 +4490,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_54get_Description(struct __pyx_obj_
     __pyx_t_1 = __pyx_v_self->thisptr->get_Description(__pyx_v_val);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 186; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 187; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":187
+  /* "qsiapi.pyx":188
  *         cdef int retVal
  *         retVal = self.thisptr.get_Description(val)
  *         return retVal, val             # <<<<<<<<<<<<<<
@@ -4502,11 +4502,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_54get_Description(struct __pyx_obj_
  *     def get_ElectronsPerADU(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 187; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 188; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __pyx_convert_string_to_py_(__pyx_v_val); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 187; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __pyx_convert_string_to_py_(__pyx_v_val); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 188; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 187; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 188; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -4518,7 +4518,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_54get_Description(struct __pyx_obj_
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":183
+  /* "qsiapi.pyx":184
  *         return retVal, val
  * 
  *     def get_Description(self):             # <<<<<<<<<<<<<<
@@ -4539,7 +4539,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_54get_Description(struct __pyx_obj_
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":189
+/* "qsiapi.pyx":190
  *         return retVal, val
  * 
  *     def get_ElectronsPerADU(self):             # <<<<<<<<<<<<<<
@@ -4574,7 +4574,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_56get_ElectronsPerADU(struct __pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_ElectronsPerADU", 0);
 
-  /* "qsiapi.pyx":192
+  /* "qsiapi.pyx":193
  *         cdef int retVal
  *         cdef double val
  *         retVal = self.thisptr.get_ElectronsPerADU(&val)             # <<<<<<<<<<<<<<
@@ -4585,11 +4585,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_56get_ElectronsPerADU(struct __pyx_
     __pyx_t_1 = __pyx_v_self->thisptr->get_ElectronsPerADU((&__pyx_v_val));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 192; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 193; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":193
+  /* "qsiapi.pyx":194
  *         cdef double val
  *         retVal = self.thisptr.get_ElectronsPerADU(&val)
  *         return retVal, val             # <<<<<<<<<<<<<<
@@ -4597,11 +4597,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_56get_ElectronsPerADU(struct __pyx_
  *     def get_FocusOffset(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 193; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 194; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_val); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 193; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_val); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 194; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 193; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 194; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -4613,7 +4613,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_56get_ElectronsPerADU(struct __pyx_
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":189
+  /* "qsiapi.pyx":190
  *         return retVal, val
  * 
  *     def get_ElectronsPerADU(self):             # <<<<<<<<<<<<<<
@@ -4634,7 +4634,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_56get_ElectronsPerADU(struct __pyx_
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":195
+/* "qsiapi.pyx":196
  *         return retVal, val
  * 
  *     def get_FocusOffset(self):             # <<<<<<<<<<<<<<
@@ -4679,14 +4679,14 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_58get_FocusOffset(struct __pyx_obj_
   __pyx_pybuffernd_offsets.data = NULL;
   __pyx_pybuffernd_offsets.rcbuffer = &__pyx_pybuffer_offsets;
 
-  /* "qsiapi.pyx":196
+  /* "qsiapi.pyx":197
  * 
  *     def get_FocusOffset(self):
  *         nfilt = self.get_FilterCount()             # <<<<<<<<<<<<<<
  *         cdef np.ndarray[long, ndim=1] offsets = np.zeros(nfilt, dtype=np.int)
  *         cdef int retVal
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_FilterCount); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 196; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_FilterCount); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 197; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_2))) {
@@ -4699,54 +4699,54 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_58get_FocusOffset(struct __pyx_obj_
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 196; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 197; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 196; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 197; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_nfilt = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "qsiapi.pyx":197
+  /* "qsiapi.pyx":198
  *     def get_FocusOffset(self):
  *         nfilt = self.get_FilterCount()
  *         cdef np.ndarray[long, ndim=1] offsets = np.zeros(nfilt, dtype=np.int)             # <<<<<<<<<<<<<<
  *         cdef int retVal
  *         retVal = self.thisptr.get_FocusOffset(<long*> offsets.data)
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 197; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 198; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 197; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 198; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 197; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 198; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_nfilt);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_nfilt);
   __Pyx_GIVEREF(__pyx_v_nfilt);
-  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 197; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 198; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 197; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 198; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_int); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 197; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_int); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 198; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_5) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 197; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_5) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 198; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 197; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 198; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 197; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 198; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_6 = ((PyArrayObject *)__pyx_t_5);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_offsets.rcbuffer->pybuffer, (PyObject*)__pyx_t_6, &__Pyx_TypeInfo_long, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
       __pyx_v_offsets = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_offsets.rcbuffer->pybuffer.buf = NULL;
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 197; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 198; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     } else {__pyx_pybuffernd_offsets.diminfo[0].strides = __pyx_pybuffernd_offsets.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_offsets.diminfo[0].shape = __pyx_pybuffernd_offsets.rcbuffer->pybuffer.shape[0];
     }
   }
@@ -4754,7 +4754,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_58get_FocusOffset(struct __pyx_obj_
   __pyx_v_offsets = ((PyArrayObject *)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "qsiapi.pyx":199
+  /* "qsiapi.pyx":200
  *         cdef np.ndarray[long, ndim=1] offsets = np.zeros(nfilt, dtype=np.int)
  *         cdef int retVal
  *         retVal = self.thisptr.get_FocusOffset(<long*> offsets.data)             # <<<<<<<<<<<<<<
@@ -4765,11 +4765,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_58get_FocusOffset(struct __pyx_obj_
     __pyx_t_7 = __pyx_v_self->thisptr->get_FocusOffset(((long *)__pyx_v_offsets->data));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 199; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 200; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_7;
 
-  /* "qsiapi.pyx":200
+  /* "qsiapi.pyx":201
  *         cdef int retVal
  *         retVal = self.thisptr.get_FocusOffset(<long*> offsets.data)
  *         return retVal, offsets             # <<<<<<<<<<<<<<
@@ -4777,9 +4777,9 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_58get_FocusOffset(struct __pyx_obj_
  *     def put_FocusOffset(self,offsets):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 200; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 201; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 200; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 201; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_5);
@@ -4791,7 +4791,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_58get_FocusOffset(struct __pyx_obj_
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":195
+  /* "qsiapi.pyx":196
  *         return retVal, val
  * 
  *     def get_FocusOffset(self):             # <<<<<<<<<<<<<<
@@ -4823,7 +4823,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_58get_FocusOffset(struct __pyx_obj_
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":202
+/* "qsiapi.pyx":203
  *         return retVal, offsets
  * 
  *     def put_FocusOffset(self,offsets):             # <<<<<<<<<<<<<<
@@ -4870,14 +4870,14 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_60put_FocusOffset(struct __pyx_obj_
   __pyx_pybuffernd_coff.data = NULL;
   __pyx_pybuffernd_coff.rcbuffer = &__pyx_pybuffer_coff;
 
-  /* "qsiapi.pyx":204
+  /* "qsiapi.pyx":205
  *     def put_FocusOffset(self,offsets):
  *         cdef int retVal
  *         nfilt = self.get_FilterCount()             # <<<<<<<<<<<<<<
  *         assert len(offsets) == nfilt, "Need %d filter position offsets" % nfilt
  *         cdef np.ndarray[long, ndim=1] coff = np.array(offsets).astype(np.int)
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_FilterCount); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 204; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_get_FilterCount); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 205; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_2))) {
@@ -4890,17 +4890,17 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_60put_FocusOffset(struct __pyx_obj_
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 204; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 205; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 204; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 205; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_nfilt = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "qsiapi.pyx":205
+  /* "qsiapi.pyx":206
  *         cdef int retVal
  *         nfilt = self.get_FilterCount()
  *         assert len(offsets) == nfilt, "Need %d filter position offsets" % nfilt             # <<<<<<<<<<<<<<
@@ -4909,33 +4909,33 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_60put_FocusOffset(struct __pyx_obj_
  */
   #ifndef CYTHON_WITHOUT_ASSERTIONS
   if (unlikely(!Py_OptimizeFlag)) {
-    __pyx_t_4 = PyObject_Length(__pyx_v_offsets); if (unlikely(__pyx_t_4 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 205; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __pyx_t_1 = PyInt_FromSsize_t(__pyx_t_4); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 205; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = PyObject_Length(__pyx_v_offsets); if (unlikely(__pyx_t_4 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 206; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = PyInt_FromSsize_t(__pyx_t_4); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 206; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = PyObject_RichCompare(__pyx_t_1, __pyx_v_nfilt, Py_EQ); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 205; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = PyObject_RichCompare(__pyx_t_1, __pyx_v_nfilt, Py_EQ); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 206; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_5 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 205; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_5 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 206; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (unlikely(!__pyx_t_5)) {
-      __pyx_t_2 = __Pyx_PyString_Format(__pyx_kp_s_Need_d_filter_position_offsets, __pyx_v_nfilt); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 205; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyString_Format(__pyx_kp_s_Need_d_filter_position_offsets, __pyx_v_nfilt); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 206; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
       PyErr_SetObject(PyExc_AssertionError, __pyx_t_2);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 205; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 206; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
   }
   #endif
 
-  /* "qsiapi.pyx":206
+  /* "qsiapi.pyx":207
  *         nfilt = self.get_FilterCount()
  *         assert len(offsets) == nfilt, "Need %d filter position offsets" % nfilt
  *         cdef np.ndarray[long, ndim=1] coff = np.array(offsets).astype(np.int)             # <<<<<<<<<<<<<<
  *         retVal = self.thisptr.put_FocusOffset(<long*> coff.data)
  *         return retVal
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 206; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 207; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 206; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 207; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -4949,26 +4949,26 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_60put_FocusOffset(struct __pyx_obj_
     }
   }
   if (!__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_v_offsets); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 206; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_v_offsets); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 207; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
   } else {
-    __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 206; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 207; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_7);
     PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_3); __Pyx_GIVEREF(__pyx_t_3); __pyx_t_3 = NULL;
     __Pyx_INCREF(__pyx_v_offsets);
     PyTuple_SET_ITEM(__pyx_t_7, 0+1, __pyx_v_offsets);
     __Pyx_GIVEREF(__pyx_v_offsets);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 206; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 207; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   }
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_astype); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 206; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_astype); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 207; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 206; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 207; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_int); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 206; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_int); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 207; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = NULL;
@@ -4982,28 +4982,28 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_60put_FocusOffset(struct __pyx_obj_
     }
   }
   if (!__pyx_t_1) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_7); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 206; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_7); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 207; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_GOTREF(__pyx_t_2);
   } else {
-    __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 206; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 207; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1); __Pyx_GIVEREF(__pyx_t_1); __pyx_t_1 = NULL;
     PyTuple_SET_ITEM(__pyx_t_3, 0+1, __pyx_t_7);
     __Pyx_GIVEREF(__pyx_t_7);
     __pyx_t_7 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 206; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 207; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 206; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 207; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_8 = ((PyArrayObject *)__pyx_t_2);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_coff.rcbuffer->pybuffer, (PyObject*)__pyx_t_8, &__Pyx_TypeInfo_long, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
       __pyx_v_coff = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_coff.rcbuffer->pybuffer.buf = NULL;
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 206; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 207; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     } else {__pyx_pybuffernd_coff.diminfo[0].strides = __pyx_pybuffernd_coff.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_coff.diminfo[0].shape = __pyx_pybuffernd_coff.rcbuffer->pybuffer.shape[0];
     }
   }
@@ -5011,7 +5011,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_60put_FocusOffset(struct __pyx_obj_
   __pyx_v_coff = ((PyArrayObject *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "qsiapi.pyx":207
+  /* "qsiapi.pyx":208
  *         assert len(offsets) == nfilt, "Need %d filter position offsets" % nfilt
  *         cdef np.ndarray[long, ndim=1] coff = np.array(offsets).astype(np.int)
  *         retVal = self.thisptr.put_FocusOffset(<long*> coff.data)             # <<<<<<<<<<<<<<
@@ -5022,11 +5022,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_60put_FocusOffset(struct __pyx_obj_
     __pyx_t_9 = __pyx_v_self->thisptr->put_FocusOffset(((long *)__pyx_v_coff->data));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 207; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 208; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_9;
 
-  /* "qsiapi.pyx":208
+  /* "qsiapi.pyx":209
  *         cdef np.ndarray[long, ndim=1] coff = np.array(offsets).astype(np.int)
  *         retVal = self.thisptr.put_FocusOffset(<long*> coff.data)
  *         return retVal             # <<<<<<<<<<<<<<
@@ -5034,13 +5034,13 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_60put_FocusOffset(struct __pyx_obj_
  *     def get_ImageArray(self,size):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 208; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 209; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":202
+  /* "qsiapi.pyx":203
  *         return retVal, offsets
  * 
  *     def put_FocusOffset(self,offsets):             # <<<<<<<<<<<<<<
@@ -5072,7 +5072,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_60put_FocusOffset(struct __pyx_obj_
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":210
+/* "qsiapi.pyx":211
  *         return retVal
  * 
  *     def get_ImageArray(self,size):             # <<<<<<<<<<<<<<
@@ -5116,44 +5116,44 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_62get_ImageArray(struct __pyx_obj_6
   __pyx_pybuffernd_im.data = NULL;
   __pyx_pybuffernd_im.rcbuffer = &__pyx_pybuffer_im;
 
-  /* "qsiapi.pyx":211
+  /* "qsiapi.pyx":212
  * 
  *     def get_ImageArray(self,size):
  *         cdef np.ndarray[unsigned short, ndim=1] im = np.zeros(size, dtype=np.uint16)             # <<<<<<<<<<<<<<
  *         cdef int retVal
  *         retVal = self.thisptr.get_ImageArray(<unsigned short*> im.data)
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 211; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 212; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 211; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 212; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 211; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 212; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_size);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_size);
   __Pyx_GIVEREF(__pyx_v_size);
-  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 211; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 212; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 211; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 212; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_uint16); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 211; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_uint16); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 212; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_5) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 211; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_5) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 212; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 211; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 212; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 211; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 212; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_6 = ((PyArrayObject *)__pyx_t_5);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_im.rcbuffer->pybuffer, (PyObject*)__pyx_t_6, &__Pyx_TypeInfo_unsigned_short, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
       __pyx_v_im = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_im.rcbuffer->pybuffer.buf = NULL;
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 211; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 212; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     } else {__pyx_pybuffernd_im.diminfo[0].strides = __pyx_pybuffernd_im.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_im.diminfo[0].shape = __pyx_pybuffernd_im.rcbuffer->pybuffer.shape[0];
     }
   }
@@ -5161,7 +5161,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_62get_ImageArray(struct __pyx_obj_6
   __pyx_v_im = ((PyArrayObject *)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "qsiapi.pyx":213
+  /* "qsiapi.pyx":214
  *         cdef np.ndarray[unsigned short, ndim=1] im = np.zeros(size, dtype=np.uint16)
  *         cdef int retVal
  *         retVal = self.thisptr.get_ImageArray(<unsigned short*> im.data)             # <<<<<<<<<<<<<<
@@ -5172,11 +5172,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_62get_ImageArray(struct __pyx_obj_6
     __pyx_t_7 = __pyx_v_self->thisptr->get_ImageArray(((unsigned short *)__pyx_v_im->data));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 213; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 214; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_7;
 
-  /* "qsiapi.pyx":214
+  /* "qsiapi.pyx":215
  *         cdef int retVal
  *         retVal = self.thisptr.get_ImageArray(<unsigned short*> im.data)
  *         return retVal, im             # <<<<<<<<<<<<<<
@@ -5184,9 +5184,9 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_62get_ImageArray(struct __pyx_obj_6
  *     def get_ImageArraySize(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 214; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 215; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 214; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 215; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_5);
@@ -5198,7 +5198,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_62get_ImageArray(struct __pyx_obj_6
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":210
+  /* "qsiapi.pyx":211
  *         return retVal
  * 
  *     def get_ImageArray(self,size):             # <<<<<<<<<<<<<<
@@ -5229,7 +5229,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_62get_ImageArray(struct __pyx_obj_6
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":216
+/* "qsiapi.pyx":217
  *         return retVal, im
  * 
  *     def get_ImageArraySize(self):             # <<<<<<<<<<<<<<
@@ -5268,7 +5268,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_64get_ImageArraySize(struct __pyx_o
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_ImageArraySize", 0);
 
-  /* "qsiapi.pyx":218
+  /* "qsiapi.pyx":219
  *     def get_ImageArraySize(self):
  *         cdef int xs, ys, es, retVal
  *         retVal = self.thisptr.get_ImageArraySize(xs,ys,es)             # <<<<<<<<<<<<<<
@@ -5279,11 +5279,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_64get_ImageArraySize(struct __pyx_o
     __pyx_t_1 = __pyx_v_self->thisptr->get_ImageArraySize(__pyx_v_xs, __pyx_v_ys, __pyx_v_es);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 218; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 219; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":219
+  /* "qsiapi.pyx":220
  *         cdef int xs, ys, es, retVal
  *         retVal = self.thisptr.get_ImageArraySize(xs,ys,es)
  *         return retVal, xs, ys, es             # <<<<<<<<<<<<<<
@@ -5291,15 +5291,15 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_64get_ImageArraySize(struct __pyx_o
  *     def get_ImageReady(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 219; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 220; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_xs); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 219; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_xs); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 220; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_ys); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 219; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_ys); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 220; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_es); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 219; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_es); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 220; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = PyTuple_New(4); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 219; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = PyTuple_New(4); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 220; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_6);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -5317,7 +5317,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_64get_ImageArraySize(struct __pyx_o
   __pyx_t_6 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":216
+  /* "qsiapi.pyx":217
  *         return retVal, im
  * 
  *     def get_ImageArraySize(self):             # <<<<<<<<<<<<<<
@@ -5340,7 +5340,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_64get_ImageArraySize(struct __pyx_o
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":221
+/* "qsiapi.pyx":222
  *         return retVal, xs, ys, es
  * 
  *     def get_ImageReady(self):             # <<<<<<<<<<<<<<
@@ -5375,7 +5375,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_66get_ImageReady(struct __pyx_obj_6
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_ImageReady", 0);
 
-  /* "qsiapi.pyx":224
+  /* "qsiapi.pyx":225
  *         cdef bool ready
  *         cdef int retVal
  *         retVal = self.thisptr.get_ImageReady(&ready)             # <<<<<<<<<<<<<<
@@ -5386,11 +5386,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_66get_ImageReady(struct __pyx_obj_6
     __pyx_t_1 = __pyx_v_self->thisptr->get_ImageReady((&__pyx_v_ready));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 224; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 225; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":225
+  /* "qsiapi.pyx":226
  *         cdef int retVal
  *         retVal = self.thisptr.get_ImageReady(&ready)
  *         return retVal, ready             # <<<<<<<<<<<<<<
@@ -5398,11 +5398,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_66get_ImageReady(struct __pyx_obj_6
  *     def get_LastExposureDuration(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 225; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 226; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyBool_FromLong(__pyx_v_ready); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 225; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyBool_FromLong(__pyx_v_ready); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 226; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 225; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 226; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -5414,7 +5414,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_66get_ImageReady(struct __pyx_obj_6
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":221
+  /* "qsiapi.pyx":222
  *         return retVal, xs, ys, es
  * 
  *     def get_ImageReady(self):             # <<<<<<<<<<<<<<
@@ -5435,7 +5435,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_66get_ImageReady(struct __pyx_obj_6
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":227
+/* "qsiapi.pyx":228
  *         return retVal, ready
  * 
  *     def get_LastExposureDuration(self):             # <<<<<<<<<<<<<<
@@ -5470,7 +5470,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_68get_LastExposureDuration(struct _
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_LastExposureDuration", 0);
 
-  /* "qsiapi.pyx":230
+  /* "qsiapi.pyx":231
  *         cdef int retVal
  *         cdef double val
  *         retVal = self.thisptr.get_LastExposureDuration(&val)             # <<<<<<<<<<<<<<
@@ -5481,11 +5481,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_68get_LastExposureDuration(struct _
     __pyx_t_1 = __pyx_v_self->thisptr->get_LastExposureDuration((&__pyx_v_val));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 230; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 231; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":231
+  /* "qsiapi.pyx":232
  *         cdef double val
  *         retVal = self.thisptr.get_LastExposureDuration(&val)
  *         return retVal, val             # <<<<<<<<<<<<<<
@@ -5493,11 +5493,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_68get_LastExposureDuration(struct _
  *     def get_LastExposureStartTime(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 231; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 232; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_val); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 231; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_val); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 232; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 231; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 232; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -5509,7 +5509,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_68get_LastExposureDuration(struct _
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":227
+  /* "qsiapi.pyx":228
  *         return retVal, ready
  * 
  *     def get_LastExposureDuration(self):             # <<<<<<<<<<<<<<
@@ -5530,7 +5530,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_68get_LastExposureDuration(struct _
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":233
+/* "qsiapi.pyx":234
  *         return retVal, val
  * 
  *     def get_LastExposureStartTime(self):             # <<<<<<<<<<<<<<
@@ -5565,7 +5565,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_70get_LastExposureStartTime(struct 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_LastExposureStartTime", 0);
 
-  /* "qsiapi.pyx":236
+  /* "qsiapi.pyx":237
  *         cdef int retVal
  *         cdef string val
  *         retVal = self.thisptr.get_LastExposureStartTime(val)             # <<<<<<<<<<<<<<
@@ -5576,11 +5576,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_70get_LastExposureStartTime(struct 
     __pyx_t_1 = __pyx_v_self->thisptr->get_LastExposureStartTime(__pyx_v_val);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 236; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 237; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":237
+  /* "qsiapi.pyx":238
  *         cdef string val
  *         retVal = self.thisptr.get_LastExposureStartTime(val)
  *         return retVal, val             # <<<<<<<<<<<<<<
@@ -5588,11 +5588,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_70get_LastExposureStartTime(struct 
  *     def get_ModelNumber(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 237; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 238; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __pyx_convert_string_to_py_(__pyx_v_val); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 237; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __pyx_convert_string_to_py_(__pyx_v_val); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 238; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 237; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 238; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -5604,7 +5604,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_70get_LastExposureStartTime(struct 
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":233
+  /* "qsiapi.pyx":234
  *         return retVal, val
  * 
  *     def get_LastExposureStartTime(self):             # <<<<<<<<<<<<<<
@@ -5625,7 +5625,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_70get_LastExposureStartTime(struct 
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":239
+/* "qsiapi.pyx":240
  *         return retVal, val
  * 
  *     def get_ModelNumber(self):             # <<<<<<<<<<<<<<
@@ -5660,7 +5660,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_72get_ModelNumber(struct __pyx_obj_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_ModelNumber", 0);
 
-  /* "qsiapi.pyx":242
+  /* "qsiapi.pyx":243
  *         cdef int retVal
  *         cdef string val
  *         retVal = self.thisptr.get_ModelNumber(val)             # <<<<<<<<<<<<<<
@@ -5671,11 +5671,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_72get_ModelNumber(struct __pyx_obj_
     __pyx_t_1 = __pyx_v_self->thisptr->get_ModelNumber(__pyx_v_val);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 242; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 243; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":243
+  /* "qsiapi.pyx":244
  *         cdef string val
  *         retVal = self.thisptr.get_ModelNumber(val)
  *         return retVal, val             # <<<<<<<<<<<<<<
@@ -5683,11 +5683,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_72get_ModelNumber(struct __pyx_obj_
  *     def get_PixelSizeX(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 243; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 244; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __pyx_convert_string_to_py_(__pyx_v_val); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 243; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __pyx_convert_string_to_py_(__pyx_v_val); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 244; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 243; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 244; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -5699,7 +5699,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_72get_ModelNumber(struct __pyx_obj_
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":239
+  /* "qsiapi.pyx":240
  *         return retVal, val
  * 
  *     def get_ModelNumber(self):             # <<<<<<<<<<<<<<
@@ -5720,7 +5720,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_72get_ModelNumber(struct __pyx_obj_
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":245
+/* "qsiapi.pyx":246
  *         return retVal, val
  * 
  *     def get_PixelSizeX(self):             # <<<<<<<<<<<<<<
@@ -5755,7 +5755,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_74get_PixelSizeX(struct __pyx_obj_6
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_PixelSizeX", 0);
 
-  /* "qsiapi.pyx":248
+  /* "qsiapi.pyx":249
  *         cdef int retVal
  *         cdef double val
  *         retVal = self.thisptr.get_PixelSizeX(&val)             # <<<<<<<<<<<<<<
@@ -5766,11 +5766,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_74get_PixelSizeX(struct __pyx_obj_6
     __pyx_t_1 = __pyx_v_self->thisptr->get_PixelSizeX((&__pyx_v_val));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 248; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 249; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":249
+  /* "qsiapi.pyx":250
  *         cdef double val
  *         retVal = self.thisptr.get_PixelSizeX(&val)
  *         return retVal, val             # <<<<<<<<<<<<<<
@@ -5778,11 +5778,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_74get_PixelSizeX(struct __pyx_obj_6
  *     def get_PixelSizeY(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 249; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 250; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_val); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 249; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_val); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 250; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 249; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 250; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -5794,7 +5794,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_74get_PixelSizeX(struct __pyx_obj_6
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":245
+  /* "qsiapi.pyx":246
  *         return retVal, val
  * 
  *     def get_PixelSizeX(self):             # <<<<<<<<<<<<<<
@@ -5815,7 +5815,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_74get_PixelSizeX(struct __pyx_obj_6
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":251
+/* "qsiapi.pyx":252
  *         return retVal, val
  * 
  *     def get_PixelSizeY(self):             # <<<<<<<<<<<<<<
@@ -5850,7 +5850,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_76get_PixelSizeY(struct __pyx_obj_6
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_PixelSizeY", 0);
 
-  /* "qsiapi.pyx":254
+  /* "qsiapi.pyx":255
  *         cdef int retVal
  *         cdef double val
  *         retVal = self.thisptr.get_PixelSizeY(&val)             # <<<<<<<<<<<<<<
@@ -5861,11 +5861,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_76get_PixelSizeY(struct __pyx_obj_6
     __pyx_t_1 = __pyx_v_self->thisptr->get_PixelSizeY((&__pyx_v_val));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 254; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 255; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":255
+  /* "qsiapi.pyx":256
  *         cdef double val
  *         retVal = self.thisptr.get_PixelSizeY(&val)
  *         return retVal, val             # <<<<<<<<<<<<<<
@@ -5873,11 +5873,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_76get_PixelSizeY(struct __pyx_obj_6
  *     def get_Position(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 255; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 256; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_val); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 255; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_val); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 256; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 255; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 256; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -5889,7 +5889,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_76get_PixelSizeY(struct __pyx_obj_6
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":251
+  /* "qsiapi.pyx":252
  *         return retVal, val
  * 
  *     def get_PixelSizeY(self):             # <<<<<<<<<<<<<<
@@ -5910,7 +5910,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_76get_PixelSizeY(struct __pyx_obj_6
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":257
+/* "qsiapi.pyx":258
  *         return retVal, val
  * 
  *     def get_Position(self):             # <<<<<<<<<<<<<<
@@ -5945,7 +5945,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_78get_Position(struct __pyx_obj_6qs
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_Position", 0);
 
-  /* "qsiapi.pyx":260
+  /* "qsiapi.pyx":261
  *         cdef int retVal
  *         cdef short val
  *         retVal = self.thisptr.get_Position(&val)             # <<<<<<<<<<<<<<
@@ -5956,11 +5956,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_78get_Position(struct __pyx_obj_6qs
     __pyx_t_1 = __pyx_v_self->thisptr->get_Position((&__pyx_v_val));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 260; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 261; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":261
+  /* "qsiapi.pyx":262
  *         cdef short val
  *         retVal = self.thisptr.get_Position(&val)
  *         return retVal, val             # <<<<<<<<<<<<<<
@@ -5968,11 +5968,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_78get_Position(struct __pyx_obj_6qs
  *     def put_Position(self, short pos):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 261; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 262; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_From_short(__pyx_v_val); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 261; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = __Pyx_PyInt_From_short(__pyx_v_val); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 262; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 261; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 262; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -5984,7 +5984,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_78get_Position(struct __pyx_obj_6qs
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":257
+  /* "qsiapi.pyx":258
  *         return retVal, val
  * 
  *     def get_Position(self):             # <<<<<<<<<<<<<<
@@ -6005,7 +6005,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_78get_Position(struct __pyx_obj_6qs
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":263
+/* "qsiapi.pyx":264
  *         return retVal, val
  * 
  *     def put_Position(self, short pos):             # <<<<<<<<<<<<<<
@@ -6024,7 +6024,7 @@ static PyObject *__pyx_pw_6qsiapi_9QSICamera_81put_Position(PyObject *__pyx_v_se
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("put_Position (wrapper)", 0);
   assert(__pyx_arg_pos); {
-    __pyx_v_pos = __Pyx_PyInt_As_short(__pyx_arg_pos); if (unlikely((__pyx_v_pos == (short)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 263; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_pos = __Pyx_PyInt_As_short(__pyx_arg_pos); if (unlikely((__pyx_v_pos == (short)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 264; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -6050,7 +6050,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_80put_Position(struct __pyx_obj_6qs
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("put_Position", 0);
 
-  /* "qsiapi.pyx":265
+  /* "qsiapi.pyx":266
  *     def put_Position(self, short pos):
  *         cdef int retVal
  *         retVal = self.thisptr.put_Position(pos)             # <<<<<<<<<<<<<<
@@ -6061,11 +6061,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_80put_Position(struct __pyx_obj_6qs
     __pyx_t_1 = __pyx_v_self->thisptr->put_Position(__pyx_v_pos);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 265; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 266; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":266
+  /* "qsiapi.pyx":267
  *         cdef int retVal
  *         retVal = self.thisptr.put_Position(pos)
  *         return retVal             # <<<<<<<<<<<<<<
@@ -6073,13 +6073,13 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_80put_Position(struct __pyx_obj_6qs
  *     def get_SetCCDTemperature(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 266; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 267; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":263
+  /* "qsiapi.pyx":264
  *         return retVal, val
  * 
  *     def put_Position(self, short pos):             # <<<<<<<<<<<<<<
@@ -6098,7 +6098,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_80put_Position(struct __pyx_obj_6qs
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":268
+/* "qsiapi.pyx":269
  *         return retVal
  * 
  *     def get_SetCCDTemperature(self):             # <<<<<<<<<<<<<<
@@ -6133,7 +6133,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_82get_SetCCDTemperature(struct __py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_SetCCDTemperature", 0);
 
-  /* "qsiapi.pyx":271
+  /* "qsiapi.pyx":272
  *         cdef int retVal
  *         cdef double val
  *         retVal = self.thisptr.get_SetCCDTemperature(&val)             # <<<<<<<<<<<<<<
@@ -6144,11 +6144,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_82get_SetCCDTemperature(struct __py
     __pyx_t_1 = __pyx_v_self->thisptr->get_SetCCDTemperature((&__pyx_v_val));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 271; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 272; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":272
+  /* "qsiapi.pyx":273
  *         cdef double val
  *         retVal = self.thisptr.get_SetCCDTemperature(&val)
  *         return retVal, val             # <<<<<<<<<<<<<<
@@ -6156,11 +6156,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_82get_SetCCDTemperature(struct __py
  *     def put_SetCCDTemperature(self,double val):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 272; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 273; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_val); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 272; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_val); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 273; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 272; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 273; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -6172,7 +6172,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_82get_SetCCDTemperature(struct __py
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":268
+  /* "qsiapi.pyx":269
  *         return retVal
  * 
  *     def get_SetCCDTemperature(self):             # <<<<<<<<<<<<<<
@@ -6193,7 +6193,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_82get_SetCCDTemperature(struct __py
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":274
+/* "qsiapi.pyx":275
  *         return retVal, val
  * 
  *     def put_SetCCDTemperature(self,double val):             # <<<<<<<<<<<<<<
@@ -6212,7 +6212,7 @@ static PyObject *__pyx_pw_6qsiapi_9QSICamera_85put_SetCCDTemperature(PyObject *_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("put_SetCCDTemperature (wrapper)", 0);
   assert(__pyx_arg_val); {
-    __pyx_v_val = __pyx_PyFloat_AsDouble(__pyx_arg_val); if (unlikely((__pyx_v_val == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 274; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_val = __pyx_PyFloat_AsDouble(__pyx_arg_val); if (unlikely((__pyx_v_val == (double)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 275; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -6238,7 +6238,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_84put_SetCCDTemperature(struct __py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("put_SetCCDTemperature", 0);
 
-  /* "qsiapi.pyx":276
+  /* "qsiapi.pyx":277
  *     def put_SetCCDTemperature(self,double val):
  *         cdef int retVal
  *         retVal = self.thisptr.put_SetCCDTemperature(val)             # <<<<<<<<<<<<<<
@@ -6249,11 +6249,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_84put_SetCCDTemperature(struct __py
     __pyx_t_1 = __pyx_v_self->thisptr->put_SetCCDTemperature(__pyx_v_val);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 276; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 277; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":277
+  /* "qsiapi.pyx":278
  *         cdef int retVal
  *         retVal = self.thisptr.put_SetCCDTemperature(val)
  *         return retVal             # <<<<<<<<<<<<<<
@@ -6261,13 +6261,13 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_84put_SetCCDTemperature(struct __py
  *     def put_CoolerOn(self,bool cool):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 277; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 278; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":274
+  /* "qsiapi.pyx":275
  *         return retVal, val
  * 
  *     def put_SetCCDTemperature(self,double val):             # <<<<<<<<<<<<<<
@@ -6286,7 +6286,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_84put_SetCCDTemperature(struct __py
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":279
+/* "qsiapi.pyx":280
  *         return retVal
  * 
  *     def put_CoolerOn(self,bool cool):             # <<<<<<<<<<<<<<
@@ -6305,7 +6305,7 @@ static PyObject *__pyx_pw_6qsiapi_9QSICamera_87put_CoolerOn(PyObject *__pyx_v_se
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("put_CoolerOn (wrapper)", 0);
   assert(__pyx_arg_cool); {
-    __pyx_v_cool = __Pyx_PyObject_IsTrue(__pyx_arg_cool); if (unlikely((__pyx_v_cool == (bool)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 279; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_cool = __Pyx_PyObject_IsTrue(__pyx_arg_cool); if (unlikely((__pyx_v_cool == (bool)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 280; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -6331,7 +6331,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_86put_CoolerOn(struct __pyx_obj_6qs
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("put_CoolerOn", 0);
 
-  /* "qsiapi.pyx":281
+  /* "qsiapi.pyx":282
  *     def put_CoolerOn(self,bool cool):
  *         cdef int retVal
  *         retVal = self.thisptr.put_CoolerOn(cool)             # <<<<<<<<<<<<<<
@@ -6342,11 +6342,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_86put_CoolerOn(struct __pyx_obj_6qs
     __pyx_t_1 = __pyx_v_self->thisptr->put_CoolerOn(__pyx_v_cool);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 281; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":282
+  /* "qsiapi.pyx":283
  *         cdef int retVal
  *         retVal = self.thisptr.put_CoolerOn(cool)
  *         return retVal             # <<<<<<<<<<<<<<
@@ -6354,13 +6354,13 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_86put_CoolerOn(struct __pyx_obj_6qs
  *     def put_IsMainCamera(self,bool main):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 282; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 283; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":279
+  /* "qsiapi.pyx":280
  *         return retVal
  * 
  *     def put_CoolerOn(self,bool cool):             # <<<<<<<<<<<<<<
@@ -6379,7 +6379,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_86put_CoolerOn(struct __pyx_obj_6qs
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":284
+/* "qsiapi.pyx":285
  *         return retVal
  * 
  *     def put_IsMainCamera(self,bool main):             # <<<<<<<<<<<<<<
@@ -6398,7 +6398,7 @@ static PyObject *__pyx_pw_6qsiapi_9QSICamera_89put_IsMainCamera(PyObject *__pyx_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("put_IsMainCamera (wrapper)", 0);
   assert(__pyx_arg_main); {
-    __pyx_v_main = __Pyx_PyObject_IsTrue(__pyx_arg_main); if (unlikely((__pyx_v_main == (bool)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 284; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_main = __Pyx_PyObject_IsTrue(__pyx_arg_main); if (unlikely((__pyx_v_main == (bool)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 285; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -6424,7 +6424,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_88put_IsMainCamera(struct __pyx_obj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("put_IsMainCamera", 0);
 
-  /* "qsiapi.pyx":286
+  /* "qsiapi.pyx":287
  *     def put_IsMainCamera(self,bool main):
  *         cdef int retVal
  *         retVal = self.thisptr.put_IsMainCamera(main)             # <<<<<<<<<<<<<<
@@ -6435,11 +6435,11 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_88put_IsMainCamera(struct __pyx_obj
     __pyx_t_1 = __pyx_v_self->thisptr->put_IsMainCamera(__pyx_v_main);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 286; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 287; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":287
+  /* "qsiapi.pyx":288
  *         cdef int retVal
  *         retVal = self.thisptr.put_IsMainCamera(main)
  *         return retVal             # <<<<<<<<<<<<<<
@@ -6447,13 +6447,13 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_88put_IsMainCamera(struct __pyx_obj
  *     def put_SelectCamera(self,string serial):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 287; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 288; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":284
+  /* "qsiapi.pyx":285
  *         return retVal
  * 
  *     def put_IsMainCamera(self,bool main):             # <<<<<<<<<<<<<<
@@ -6472,7 +6472,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_88put_IsMainCamera(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "qsiapi.pyx":289
+/* "qsiapi.pyx":290
  *         return retVal
  * 
  *     def put_SelectCamera(self,string serial):             # <<<<<<<<<<<<<<
@@ -6491,7 +6491,7 @@ static PyObject *__pyx_pw_6qsiapi_9QSICamera_91put_SelectCamera(PyObject *__pyx_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("put_SelectCamera (wrapper)", 0);
   assert(__pyx_arg_serial); {
-    __pyx_v_serial = __pyx_convert_string_from_py_(__pyx_arg_serial); if (unlikely(PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 289; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+    __pyx_v_serial = __pyx_convert_string_from_py_(__pyx_arg_serial); if (unlikely(PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 290; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -6517,7 +6517,7 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_90put_SelectCamera(struct __pyx_obj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("put_SelectCamera", 0);
 
-  /* "qsiapi.pyx":291
+  /* "qsiapi.pyx":292
  *     def put_SelectCamera(self,string serial):
  *         cdef int retVal
  *         retVal = self.thisptr.put_SelectCamera(serial)             # <<<<<<<<<<<<<<
@@ -6527,23 +6527,23 @@ static PyObject *__pyx_pf_6qsiapi_9QSICamera_90put_SelectCamera(struct __pyx_obj
     __pyx_t_1 = __pyx_v_self->thisptr->put_SelectCamera(__pyx_v_serial);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 291; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 292; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __pyx_v_retVal = __pyx_t_1;
 
-  /* "qsiapi.pyx":292
+  /* "qsiapi.pyx":293
  *         cdef int retVal
  *         retVal = self.thisptr.put_SelectCamera(serial)
  *         return retVal             # <<<<<<<<<<<<<<
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 292; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_retVal); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 293; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "qsiapi.pyx":289
+  /* "qsiapi.pyx":290
  *         return retVal
  * 
  *     def put_SelectCamera(self,string serial):             # <<<<<<<<<<<<<<
@@ -9271,7 +9271,6 @@ static int __Pyx_InitCachedConstants(void) {
 
 static int __Pyx_InitGlobals(void) {
   if (__Pyx_InitStrings(__pyx_string_tab) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;};
-  __pyx_int_0 = PyInt_FromLong(0); if (unlikely(!__pyx_int_0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   return 0;
   __pyx_L1_error:;
   return -1;
