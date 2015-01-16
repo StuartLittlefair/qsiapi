@@ -5,3 +5,4 @@ a.out
 *.fits
 test
 test.cc
+qsiapi.cpp
