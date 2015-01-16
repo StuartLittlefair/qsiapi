@@ -167,7 +167,7 @@ cdef class QSICamera:
         cdef int retVal
         cdef CameraState state
         retVal = self.thisptr.get_CameraState(&state)
-        return retVal, state       
+        return state       
 
     def get_CameraXSize(self):
         cdef int retVal
