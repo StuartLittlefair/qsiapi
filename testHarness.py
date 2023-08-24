@@ -1,126 +1,140 @@
 import time
 import qsiapi
 import sys
-import numpy
+import numpy as np
+from matplotlib import pyplot as plt
+from astropy.io import fits
 
-def display():
-    import numdisplay
-    import scipy.stats as stats    
-    minVal = stats.scoreatpercentile(image,5)
-    maxVal = stats.scoreatpercentile(image,95)    
-    numdisplay.display(image,z1=minVal,z2=maxVal)
+
+def display(image):
+    minVal, maxVal = np.percentile(image, (1, 99))
+    plt.imshow(image, zlow=minVal, zhigh=maxVal, cmap="gray", origin="lower")
+    plt.show()
+
 
 def updateFitsHeader(hdr):
-    
-    #gather information and append to header, or update if already there
+    # gather information and append to header, or update if already there
     status, dateObs = cam.get_LastExposureStartTime()
-    hdr.update(key="DATE-OBS", value=dateObs, comment="YYYY-MM-DDThh:mm:ss observation start, UT")
+    hdr.update(
+        key="DATE-OBS",
+        value=dateObs,
+        comment="YYYY-MM-DDThh:mm:ss observation start, UT",
+    )
 
     status, exposure = cam.get_LastExposureDuration()
     hdr.update(key="EXPOSURE", value=exposure, comment="Exposure time in seconds")
     hdr.update(key="EXPTIME", value=exposure, comment="Exposure time in seconds")
 
     status, ccdSetTemp = cam.get_SetCCDTemperature()
-    hdr.update(key="SET-TEMP", value=ccdSetTemp, comment="CCD temperature setpoint in C")
+    hdr.update(
+        key="SET-TEMP", value=ccdSetTemp, comment="CCD temperature setpoint in C"
+    )
     status, ccdActualTemp = cam.get_CCDTemperature()
     hdr.update(key="CCD-TEMP", value=ccdActualTemp, comment="CCD temperature in C")
 
     status, xbin = cam.get_BinX()
-    hdr.update(key="XBINNING", value=xbin, comment="Binning factor in width")    
+    hdr.update(key="XBINNING", value=xbin, comment="Binning factor in width")
     status, ybin = cam.get_BinY()
-    hdr.update(key="YBINNING", value=ybin, comment="Binning factor in height")    
+    hdr.update(key="YBINNING", value=ybin, comment="Binning factor in height")
 
     status, xPixSz = cam.get_PixelSizeX()
     xPixSz = xPixSz * xbin
     status, yPixSz = cam.get_PixelSizeY()
     yPixSz = yPixSz * ybin
-    hdr.update(key="XPIXSZ", value=xPixSz, comment="Pixel Width in microns (after binning)")    
-    hdr.update(key="YPIXSZ", value=yPixSz, comment="Pixel Height in microns (after binning)")    
+    hdr.update(
+        key="XPIXSZ", value=xPixSz, comment="Pixel Width in microns (after binning)"
+    )
+    hdr.update(
+        key="YPIXSZ", value=yPixSz, comment="Pixel Height in microns (after binning)"
+    )
 
     status, startX = cam.get_StartX()
     status, startY = cam.get_StartY()
-    xOrgSubF = startX/xbin
-    yOrgSubF = startY/ybin
-    hdr.update(key="XORGSUBF", value=xOrgSubF, comment="Subframe X position in binned pixels")    
-    hdr.update(key="YORGSUBF", value=yOrgSubF, comment="Subframe Y position in binned pixels")    
+    xOrgSubF = startX / xbin
+    yOrgSubF = startY / ybin
+    hdr.update(
+        key="XORGSUBF", value=xOrgSubF, comment="Subframe X position in binned pixels"
+    )
+    hdr.update(
+        key="YORGSUBF", value=yOrgSubF, comment="Subframe Y position in binned pixels"
+    )
 
     status, egain = cam.get_ElectronsPerADU()
-    hdr.update(key="EGAIN", value=egain, comment="Electronic gain in e-/ADU")    
+    hdr.update(key="EGAIN", value=egain, comment="Electronic gain in e-/ADU")
 
     status, instrume = cam.get_ModelNumber()
-    instrume = instrume.replace('\x00','')
-    if (instrume == '532ws-M2'):
-        instrume = 'QSI 532'
-    hdr.update(key="INSTRUME", value=instrume, comment="instrument or camera used")    
+    instrume = instrume.replace("\x00", "")
+    if instrume == "532ws-M2":
+        instrume = "QSI 532"
+    hdr.update(key="INSTRUME", value=instrume, comment="instrument or camera used")
 
-    
     filters = cam.get_Names()
     status, position = cam.get_Position()
     thisFilter = filters[position]
-    hdr.update(key="FILTER", value=thisFilter, comment="Filter used when taking image")    
-    
+    hdr.update(key="FILTER", value=thisFilter, comment="Filter used when taking image")
 
-def writeFits(filename):
-    import pyfits
-    hdu = pyfits.PrimaryHDU(image)
+
+def writeFits(image, filename):
+    hdu = fits.PrimaryHDU(image)
     updateFitsHeader(hdu.header)
-    hdulist = pyfits.HDUList([hdu])
-    hdulist.writeto(filename,clobber=True)
-    print "written fits file to ", filename
+    hdulist = fits.HDUList([hdu])
+    hdulist.writeto(filename, clobber=True)
+    print(f"written fits file to {filename}")
 
 
-cam = qsiapi.QSICamera()
-status,info = cam.get_DriverInfo()
-print "qsiapi version", info
+if __name__ == "__main__":
+    cam = qsiapi.QSICamera()
+    status, info = cam.get_DriverInfo()
+    print(f"qsiapi version {info}")
 
-serials,descs,numcams=cam.get_AvailableCameras()
-if (numcams <1):
-    sys.exit('No Cameras Found')
+    serials, descs, numcams = cam.get_AvailableCameras()
+    if numcams < 1:
+        sys.exit("No Cam]eras Found")
 
-cam.put_SelectCamera(serials[0])
-cam.put_IsMainCamera(True)
-cam.put_Connected(True)
-status, modelNumber = cam.get_ModelNumber()
-modelNumber = modelNumber.replace('\x00','')
-status, desc = cam.get_Description()
-print "Connected to ", modelNumber, ": ", desc
+    cam.put_SelectCamera(serials[0])
+    cam.put_IsMainCamera(True)
+    cam.put_Connected(True)
+    status, modelNumber = cam.get_ModelNumber()
+    modelNumber = modelNumber.replace("\x00", "")
+    status, desc = cam.get_Description()
+    print(f"Connected to {modelNumber}: {desc}")
 
-filters = ('U','B','V','R','I')
-cam.put_Names(filters)
-newFilters = cam.get_Names()
-cam.put_Position(2)
-status, filterPos = cam.get_Position()
-print 'Selected filter ', newFilters[filterPos]
+    filters = ("U", "B", "V", "R", "I")
+    cam.put_Names(filters)
+    newFilters = cam.get_Names()
+    cam.put_Position(2)
+    status, filterPos = cam.get_Position()
+    print(f"Selected filter: {newFilters[filterPos]}")
 
-cam.put_FocusOffset([0,0,0,0,0])
-offsets =  cam.get_FocusOffset()
+    cam.put_FocusOffset([0, 0, 0, 0, 0])
+    offsets = cam.get_FocusOffset()
 
-binFac = int(raw_input('> Enter binning factor for image: '))
-status = cam.put_BinX(binFac)
-status = cam.put_BinY(binFac)
-status, xsize = cam.get_CameraXSize()
-status, ysize = cam.get_CameraYSize()
-status = cam.put_StartX(0)
-status = cam.put_StartY(0)
-status = cam.put_NumX(int(xsize/binFac))
-status = cam.put_NumY(int(ysize/binFac))
+    binFac = int(input("> Enter binning factor for image: "))
+    status = cam.put_BinX(binFac)
+    status = cam.put_BinY(binFac)
+    status, xsize = cam.get_CameraXSize()
+    status, ysize = cam.get_CameraYSize()
+    status = cam.put_StartX(0)
+    status = cam.put_StartY(0)
+    status = cam.put_NumX(int(xsize / binFac))
+    status = cam.put_NumY(int(ysize / binFac))
 
-# take 3s exposure, no shutter open
-print "Starting 3s exposure"
-cam.StartExposure(3.00, False)
-status, done = cam.get_ImageReady()
-while(not done):
-    time.sleep(0.5)
+    # take 3s exposure, no shutter open
+    print("Starting 3s dark exposure")
+    cam.StartExposure(3.00, False)
     status, done = cam.get_ImageReady()
+    while not done:
+        time.sleep(0.5)
+        status, done = cam.get_ImageReady()
 
-print "Image Taken"
-status, xs,ys,els = cam.get_ImageArraySize()
-print "Image Dimensions: %d, %d, %d"  % (xs,ys,els)
-status, image = cam.get_ImageArray(xs*ys)
-image = numpy.reshape(image,(ys,xs),order='C')
-    
-writeFits('test.fits')
-print "Written frame to 'test.fits'"
+    print("Image Taken")
+    status, xs, ys, els = cam.get_ImageArraySize()
+    print("Image Dimensions: %d, %d, %d" % (xs, ys, els))
+    status, image = cam.get_ImageArray(xs * ys)
+    image = np.reshape(image, (ys, xs), order="C")
 
-cam.put_Connected(False)
-print "disconnected"
+    writeFits("test.fits")
+    print("Written frame to 'test.fits'")
+
+    cam.put_Connected(False)
+    print("disconnected")
