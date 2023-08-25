@@ -123,9 +123,12 @@ if __name__ == "__main__":
     print("Starting 3s dark exposure")
     cam.StartExposure(3.00, False)
     status, done = cam.get_ImageReady()
+    print("waiting for image to be ready", end="")
     while not done:
         time.sleep(0.5)
+        print(" .", end="")
         status, done = cam.get_ImageReady()
+    print(" done")
 
     print("Image Taken")
     status, xs, ys, els = cam.get_ImageArraySize()
